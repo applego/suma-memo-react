@@ -92,7 +92,6 @@ const ModalMemoEdit = () => {
   };
 
   const handleSubmit = () => {
-    console.log('handleSubmit');
     const now = new Date().toLocaleString();
     dispatch(updateMemoAction(id, title, text, now, pinned));
   };

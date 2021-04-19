@@ -77,7 +77,6 @@ const ModalMemoAdd = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [pinned, setPinned] = useState(false);
-  console.log(pinned);
 
   const inputTitle = (event) => {
     setTitle(event.target.value);
@@ -89,11 +88,9 @@ const ModalMemoAdd = () => {
 
   const handlePinChange = (event) => {
     setPinned(event.target.checked);
-    console.log(pinned);
   };
 
   const handleSubmit = () => {
-    console.log('handleSubmit');
     const now = new Date().toLocaleString();
     const tit = title.trim() || '無題';
     dispatch(addMemoAction(id, tit, text, now, pinned));
