@@ -7,25 +7,27 @@ export const ThemeContext = React.createContext({
 });
 
 const ThemeContextProvider = (props) => {
-  const [theme, setTheme] = useState(defaultTheme);
+  const [theme, setTheme] = useState(mTheme);
 
   const handleThemeChange = (themeName) => {
     localStorage.setItem('theme', themeName);
     switch (themeName) {
       case 'DEFAULT':
-        setTheme(defaultTheme);
+        // setTheme(defaultTheme);
+        setTheme(mTheme);
         break;
       case 'DARK':
         setTheme(darkTheme);
         break;
-      case 'NAVY':
-        setTheme(navyTheme);
-        break;
-      case 'MTHEME':
-        setTheme(mTheme);
-        break;
+      // case 'NAVY':
+      //   setTheme(navyTheme);
+      //   break;
+      // case 'MTHEME':
+      //   setTheme(mTheme);
+      //   break;
       default:
-        setThme(defaultTheme);
+        // setThme(defaultTheme);
+        setTheme(mTheme);
         break;
     }
   };

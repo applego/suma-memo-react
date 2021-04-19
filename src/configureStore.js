@@ -8,7 +8,7 @@ import rootReducer from './reducers';
 const persistConfig = {
   key: 'root', // Storageに保存されるキー名を指定する
   storage, // 保存先としてlocalStorageがここで設定される
-  whitelist: ['memos'], // Stateは`memo`のみStorageに保存する
+  whitelist: ['memolist'], // Stateは`memo`のみStorageに保存する
   // blacklist: ['visibilityFilter'] // `visibilityFilter`は保存しない
 };
 

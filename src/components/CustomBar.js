@@ -72,8 +72,8 @@ const CustomBar = (props) => {
           デフォルト
         </MenuItem>
         <MenuItem onClick={() => handleMenuClick('DARK')}>ダーク</MenuItem>
-        <MenuItem onClick={() => handleMenuClick('NAVY')}>ネイビー</MenuItem>
-        <MenuItem onClick={() => handleMenuClick('MTHEME')}>...</MenuItem>
+        {/* <MenuItem onClick={() => handleMenuClick('NAVY')}>ネイビー</MenuItem>
+        <MenuItem onClick={() => handleMenuClick('MTHEME')}>...</MenuItem> */}
       </Menu>
     </React.Fragment>
   );

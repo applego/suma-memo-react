@@ -1,28 +1,41 @@
-import { connect } from 'react-redux';
-import { toggleMemo } from '../actions';
+import { useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { fetchMemoAction, toggleMemo } from '../actions';
 import MemoList from '../components/MemoList';
 
-const getVisibleMemos = (memos, filter) => {
+const getVisibleMemoList = (memolist, filter) => {
   switch (filter) {
     case 'SHOW_ALL':
-      return memos;
+      return memolist;
     case 'SHOW_COMPLETED':
-      return memos.filter((t) => t.completed);
+      return memolist.filter((t) => t.completed);
     case 'SHOW_ACTIVE':
-      return memos.filter((t) => !t.completed);
+      return memolist.filter((t) => !t.completed);
     default:
       throw new Error('Unknown filter: ' + filter);
   }
 };
 
 const mapStateToProps = (state) => ({
-  memos: getVisibleMemos(state.memos, state.visibilityFilter),
+  memolist: getVisibleMemoList(state.memolist, state.visibilityFilter),
 });
 
 const mapDispatchToProps = {
-  onMemoClick: toggleMemo,
+  // onMemoClick: toggleMemo,
 };
 
 const VisibleMemoList = connect(mapStateToProps, mapDispatchToProps)(MemoList);
 
 export default VisibleMemoList;
+
+// // hooks で書き換え
+// const useFetchMemos = () => {
+//   const dispatch = useDispatch();
+//   const memmos = useSelector((state) => state.memos);
+
+//   useEffect(() => {
+//     dispatch(fetchMemoAction());
+//   });
+
+//   return memmos;
+// };

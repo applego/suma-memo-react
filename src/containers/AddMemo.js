@@ -1,32 +1,51 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
-import { connect } from 'react-redux';
-import { addMemo } from '../actions';
+import { Link, useLocation } from 'react-router-dom';
+import ModalMemoAdd from '../components/ModalMemoAdd';
 
-let AddMemo = ({ dispatch }) => {
-  let input;
+const AddMemo = () => {
+  const location = useLocation();
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          dispatch(addMemo(input.value));
-          input.value = '';
+    <>
+      <Button
+        variant='outlined'
+        color='primary'
+        component={Link}
+        to={{
+          pathname: '/memo/new',
+          state: { background: location },
         }}
       >
-        <input
-          ref={(node) => {
-            input = node;
-          }}
-        />
-        <button type='submit'>Add Memo</button>
-      </form>
-    </div>
+        Add Memo
+      </Button>
+      <div className='module-spacer--small' />
+    </>
+    // <div>
+    //   <form
+    //     onSubmit={(e) => {
+    //       e.preventDefault();
+    //       let title = inputTitle.current.value;
+    //       if (!title.trim()) {
+    //         title = '無題';
+    //       }
+    //       let text = inputText.current.value;
+    //       const now = new Date().toLocaleString();
+    //       const id = localStorage.getItem('maxmemoid')
+    //         ? (Number(localStorage.getItem('maxmemoid')) + 1).toString()
+    //         : '1';
+    //       dispatch(addMemoAction(id, title, text, now));
+    //       localStorage.setItem('maxmemoid', id);
+    //       inputTitle.current.value = '';
+    //       inputText.current.value = '';
+    //     }}
+    //   >
+    //     <input ref={inputTitle} type='text' />
+    //     <input ref={inputText} type='text' />
+    //     <button type='submit'>Add Memo</button>
+    //   </form>
+    // </div>
   );
 };
-AddMemo = connect()(AddMemo);
 
 export default AddMemo;

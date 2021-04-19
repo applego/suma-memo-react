@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import memos from './memos';
+import memolist from './memolist';
 import visibilityFilter from './visibilityFilter';
 
 export default combineReducers({
-  memos,
+  memolist,
   visibilityFilter,
 });
